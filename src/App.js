@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function App() {
 
-const [person,setperson]=useState([
+const [person,setPerson]=useState([
   {name:'Youssef',age:24},
    {name:'KAMAL',age:30} 
 ]);
@@ -13,11 +13,18 @@ const [person,setperson]=useState([
 //     {name:'Youssef',age:24},
 //     {name:'KAMAL',age:30} ]
 // };
+const updateName=()=>{
+  const updatePerson=[...person]
+  updatePerson[0].name ='new Name'
+  updatePerson[0].age=25
+  setPerson(updatePerson);
+}
+
   return (
     <div className="App">
-      <Youssef name={person[0].name} age="24" metier="devloper full stack" />
-      <Youssef name={person[1].name} age="34" metier="OTM" >ok im here</Youssef>
-
+      <Youssef name={person[0].name} age={person[0].age} metier="devloper full stack" />
+      <Youssef name={person[1].name} age= "34 "metier="OTM" >ok im here</Youssef>
+      <button onClick={updateName}>Mettre à jour le nom</button>
     </div>
   );
 }
