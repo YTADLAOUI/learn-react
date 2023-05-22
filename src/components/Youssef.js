@@ -1,7 +1,7 @@
 import React from "react";
 
 function Youssef(props){
-const  {name,age,metier} = props;
+  const  {name,age,metier} = props;
   const grandName={
     color:'blue',
     fontWeight:'bolde',
@@ -11,6 +11,7 @@ return(
     <div>
       <h1 style={grandName}>{name}</h1>
       <p>age:{age},{metier}</p>
+      <p>{props.children}</p>
     </div>
  );
 }
