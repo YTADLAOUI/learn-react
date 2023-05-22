@@ -5,26 +5,39 @@ import { useState } from 'react';
 function App() {
 
 const [person,setPerson]=useState([
-  {name:'Youssef',age:24},
-   {name:'KAMAL',age:30} 
+  {name:'usf',age:24,metier:'full stack'},{name:'kamal',age:29,metier:'ATM'}
 ]);
-//   state={
-//     person:[
-//     {name:'Youssef',age:24},
-//     {name:'KAMAL',age:30} ]
-// };
-const updateName=()=>{
-  const updatePerson=[...person]
-  updatePerson[0].name ='new Name'
-  updatePerson[0].age=25
-  setPerson(updatePerson);
-}
-
+  const updatePerson=()=>{
+    const updPerson=[...person];
+    updPerson[0].name='youssef TADLAOUI'
+    setPerson(updPerson);
+  }
+  const [namePerson,updateName]=useState('');
+  const UpdtName=()=>{
+    const updPerson=[...person];
+    updPerson[0].name=namePerson;
+    setPerson(updPerson)
+  }
+ const handlName =(event)=>{
+  updateName(event.target.value)
+ }
+ const handlSubmit=(event)=>{
+    event.preventDefault();
+    UpdtName();
+ }
   return (
     <div className="App">
-      <Youssef name={person[0].name} age={person[0].age} metier="devloper full stack" />
-      <Youssef name={person[1].name} age= "34 "metier="OTM" >ok im here</Youssef>
-      <button onClick={updateName}>Mettre à jour le nom</button>
+      <Youssef name={person[0].name} age={person[0].age} metier={person[0].metier} />
+      <Youssef name={person[1].name} age={person[1].age} metier={person[1].metier} >ok im here</Youssef>
+      <button onClick={updatePerson}>Mettre à jour le nom</button>
+      <form onSubmit={handlSubmit}>
+  <label>
+    <input type='text' onChange={handlName}></input>
+    <button type='submit'>change </button>
+  </label>
+
+      </form>
+      
     </div>
   );
 }
