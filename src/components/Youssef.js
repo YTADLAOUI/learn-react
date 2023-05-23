@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import './style.css'
+
+
+
 
 function Youssef(props){
   const  {name,age,metier,click} = props;
@@ -7,11 +11,16 @@ function Youssef(props){
     fontWeight:'bolde',
     border:'2px solid #eee'
   } ;
+  
+    const [show,setShow]=useState(false)
+
 return(
-    <div>
+    <div className="pr">
       <h1 style={grandName}>{name}</h1>
-      <p onClick={click} >age:{age},{metier}</p>
+      {show===true ?(
+      <p onClick={click} >age:{age},{metier}</p>):null}
       <p>{props.children}</p>
+      <button onClick={()=>setShow(!show)}>show</button>
     </div>
  );
 }

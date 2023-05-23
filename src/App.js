@@ -13,6 +13,8 @@ const [person,setPerson]=useState([
     setPerson(updPerson);
   }
   const [namePerson,updateName]=useState('');
+  // console.log(namePerson,'hh')
+  // console.log(person);
   const UpdtName=()=>{
     const updPerson=[...person];
     updPerson[0].name=namePerson;
@@ -24,9 +26,11 @@ const [person,setPerson]=useState([
  const handlSubmit=(event)=>{
     event.preventDefault();
     UpdtName();
+    console.log(namePerson,'hh')
  }
   return (
     <div className="App">
+      
       <Youssef name={person[0].name} age={person[0].age} metier={person[0].metier} />
       <Youssef click={updatePerson.bind(this,'nada')} name={person[1].name} age={person[1].age} metier={person[1].metier} >ok im here</Youssef>
       <button onClick={updatePerson.bind(this,'tadlaoui')}>Mettre à jour le nom</button>
