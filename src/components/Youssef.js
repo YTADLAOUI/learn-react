@@ -6,7 +6,7 @@ import './style.css'
 
 
 function Youssef(props){
-  const  {name,age,metier,click} = props;
+  const  {name,age,metier,click,tap} = props;
   const grandName={
     color:'blue',
     fontWeight:'bolde',
@@ -16,7 +16,7 @@ function Youssef(props){
     const [show,setShow]=useState(false)
 
 return(
-    <div className="pr">
+    <div className="pr" onClick={tap}>
       <h1 style={grandName}>{name}</h1>
       {show===true ?(
       <p onClick={click} >age:{age},{metier}</p>):null}
@@ -29,7 +29,7 @@ return(
 
 function fin(){
   const [person,setPerson]=useState([
-    {name:'usf',age:24,metier:'full stack'},{name:'kamal',age:29,metier:'ATM'}
+    {id:'k1',name:'usf',age:24,metier:'full stack'},{id:'k2',name:'kamal',age:29,metier:'ATM'}
   ]);
     const updatePerson=(good)=>{
       const updPerson=[...person];
@@ -52,23 +52,29 @@ function fin(){
       UpdtName();
       console.log(namePerson,'hh')
    }
+  const deleteElement = (index)=>{
+    console.log(person)
+    person.splice(index,1);
+       setPerson([...person]);
+  }
+
    return (
     <div>
 
-      {/* {person.map((person)=>{
-        return<Youssef name={person.name} age={person.age} metier={person.metier} />
-      })} */}
+      {person.map((person,index)=>{
+        return<Youssef key={person.id} tap={()=>deleteElement(index)} name={person.name} age={person.age} metier={person.metier} />
+      })}
 
-      <Youssef name={person[0].name} age={person[0].age} metier={person[0].metier} />
+     {/* <Youssef name={person[0].name} age={person[0].age} metier={person[0].metier} />
       <Youssef click={updatePerson.bind(this,'nada')} name={person[1].name} age={person[1].age} metier={person[1].metier} >ok im here</Youssef>
       <button onClick={updatePerson.bind(this,'tadlaoui')}>Mettre à jour le nom</button>
-      <form onSubmit={handlSubmit}>
+      <form onSubmit={handlSubmit}> 
   <label>
     <input type='text' onChange={handlName}></input>
     <button type='submit'>change </button>
   </label>
 
-      </form>
+      </form> */}
       
     </div>
   );
