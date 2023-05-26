@@ -1,5 +1,6 @@
 import Fin from'./components/Youssef.js'
 import './App.css';
+import Test from './components/test.js'
 import { useState } from 'react';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Fin/>
+      <Test/>
     </div>
   );
 }
