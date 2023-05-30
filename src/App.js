@@ -1,27 +1,35 @@
-import Fin from'./components/Youssef.js'
-import './App.css';
-import Test from './components/test.js'
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function App() {
 
-const [count,setCount]=useState(0);
-const inctrmment=()=>{
-setCount(count + 1)
-}
-const decrement=()=>{
-  count > 0 ?
-setCount(count - 1) :setCount(count)
-}
+const App = () => {
+  const [todoList,setTodo]=useState([])
+  const [todoTask,setTask]=useState('')
+  const handleChange=(e)=>{
+    setTask(e.target.value)
+  }
+ const pushTask=()=>{
+  const todo=[...todoList,todoTask]
+  setTodo(todo)
+ }
+ const deleteTask =(taskChoise)=>{
+  const arrReste=todoList.filter(aR=>aR !== taskChoise
+    )
+    console.log(arrReste);
+    setTodo( arrReste)
+ }
   return (
-    <div className="App">
-      {/* <Fin/>
-      <Test/> */}
-      <button onClick={decrement}>-</button>
-      <span>{count}</span>
-      <button onClick={inctrmment}>+</button>
+    <div className='App '>
+      <div className="addTask">
+        <input onChange={handleChange}/>
+        {todoList.map(td=><li>{td} <button onClick={()=>{deleteTask(td)}}> delete </button></li>)}
+        <button onClick={pushTask}>addTask</button>
+       
+      </div>
+      <div className="list">
+        
+      </div>
     </div>
   );
-}
+};
 
 export default App;
